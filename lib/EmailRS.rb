@@ -1,5 +1,8 @@
-require "EmailRS/version"
-
+require 'EmailRS/version'
+require File.expand_path('../ScriptRules/rules_index')
 module EmailRS
-  # Your code goes here...
+
+  rulesIndexObj = RulesIndex. new
+
+  rulesIndexObj.readFromFile(File.expand_path('csvInput.csv'))
 end
