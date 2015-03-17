@@ -3,6 +3,7 @@ require 'rubygems'
 require 'csv'
 require 'json'
 
+$jsonData = Hash.new
 class RulesIndex
 
 
@@ -10,42 +11,31 @@ class RulesIndex
 
  end
 
-  def readFromFile(fileName)
-    jsonFile = File.open('some.json','w');
-    jsonData = {}
+ def readFromFile(fileName)
+   def is_int(str)
+     # Check if a string should be an integer
+     return !!(str =~ /^[-+]?[1-9]([0-9]*)?$/)
+   end
 
-    CSV.foreach(fileName,:headers => true, :header_converters => :symbol) do |row|
+   lines = CSV.open(fileName).readlines
 
-      jsonData['Emails'] = {
-          :subject => row[0],
-          :body => row[1],
-          :fromName => row[2],
-          :fromEmail => row[3],
-          :toName => row[5],
-          :toEmail => row[6]
+   keys = lines.delete lines.first
 
-      };
-      # puts "data is #{jsonData[jsonData.length-1]}"
+   File.open('some.json', "w") do |f|
+     data = lines.map do |values|
+       is_int(values) ? values.to_i : values.to_s
+       Hash[keys.zip(values)]
 
-      jsonFile.write(JSON.pretty_generate(jsonData));
-
-     # CSV.parse(row).to_json
-     # @jsonFile.write(JSON.pretty_generate(@jsonData));
-   #   csv = CSV.new(fileName, :headers => true, :header_converters => :symbol, :converters => :all)
-    #  csv.to_a.map {|row| row.to_hash }
-    end
-
-
-    #{data = File.open(fileName,"r")
-    #until data.eof
-    #  line = data.readline()
-    #  print line
-    #end}"
-  end
+     end
+     f.puts JSON.pretty_generate(data)
+   end
+ end
 
 
 
 end
 
+
 rulesIndexObj = RulesIndex. new
-rulesIndexObj.readFromFile("C://Users//Pratik Bidkar//RubymineProjects//Email-Recognadion-Script//csvInput.csv")
+
+rulesIndexObj.readFromFile(File.expand_path('csvInput.csv'))
