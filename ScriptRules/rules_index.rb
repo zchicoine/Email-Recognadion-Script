@@ -1,3 +1,8 @@
+=begin
+ Converting CSV file to Json
+TODO this function should be done by Key Element Extraction (KEE) script
+=end
+
 #!/usr/local/bin/ruby
 require 'rubygems'
 require 'csv'
@@ -34,8 +39,3 @@ class RulesIndex
 
 
 end
-
-
-rulesIndexObj = RulesIndex. new
-
-rulesIndexObj.readFromFile(File.expand_path('csvInput.csv'))
