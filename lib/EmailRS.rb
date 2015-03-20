@@ -8,6 +8,6 @@ module EmailRS
 
   rulesIndexObj.readFromFile(File.expand_path('csvInput.csv'))
 
- # processRulesObj = ProcessRules. new
- # processRulesObj.readJsonFile()
+  processRulesObj = ProcessRules. new
+  processRulesObj.readJsonFile()
 end
