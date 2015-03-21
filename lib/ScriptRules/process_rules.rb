@@ -9,7 +9,8 @@ class ProcessRules
     # global valid date formats .. any new date formats can be added into this
     $validDtFormats         = ['%d/%m/%Y', '%m/%d/%Y', '%Y/%m/%d', '%d-%m-%Y', '%m-%d-%Y', '%Y-%m-%d', #basic date formats
                                '%b-%d-%y', '%d-%b-%y', '%b/%d/%y', '%d/%b', # Jan-12,12-Jan,Jan/12,12/Jan
-                               '%^b-%d-%y', '%d-%^b-%y', '%^b/%d/%y', '%d/%^b'] # JAN-12,12-JAN,JAN/12,12/JAN
+                               '%^b-%d-%y', '%d-%^b-%y', '%^b/%d/%y', '%d/%^b', # JAN-12,12-JAN,JAN/12,12/JAN
+                               '%d %b', '%d %^b'] # 28 Jan,28 JAN
 
     # @param [Object] emailObj
     def readJsonFile()
@@ -50,21 +51,26 @@ class ProcessRules
 
     # this method should validate an email of being a potential ship position email
     def validatePotentialShipEmail(msgArray)
-        #this method validates every string to qualify as a valid date format based on the
-        #date formats in the global date format array
-        def validateDate?(str)
-            $validDtFormats.each do |format|
-                puts Date.strptime(str, format) rescue false
-            end
-        end
-    # currently checking only if the message has 'M/V' and only then matching dates in that message body
+        #puts DateTime.parse('3rd Feb').to_s
+        # currently checking only if the message has 'M/V' and only then matching dates in that message body
         msgArray.each do |line|
             unless /M\/V/.match(line).nil?
-                validateDate?('28/JAN')
-                puts line
+                result = validateDate('28 Jan')
+                puts result
             end
         end
 
+    end
+
+    private
+    #this method validates every string to qualify as a valid date format based on the
+    #date formats in the global date format array
+    def validateDate(str)
+        #unless /\d{1,2}-\d{1,2}\s\w{3}/.match(str).nil?
+        $validDtFormats.each do |format|
+
+            return Date.strptime(str, format)
+        end
     end
 
 

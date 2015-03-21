@@ -1,3 +1,3 @@
-require_relative '../ScriptRules/process_rules'
+require_relative '../lib/ScriptRules/process_rules'
 
 require 'yaml'
