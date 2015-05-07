@@ -12,8 +12,8 @@ class ProcessRules
                                '%^b-%d-%y', '%d-%^b-%y', '%^b/%d/%y', '%d/%^b', # JAN-12,12-JAN,JAN/12,12/JAN
                                '%d %b', '%d %^b'] # 28 Jan,28 JAN
 
-    # @param [Object] emailObj
-    def readJsonFile()
+
+    def readJsonFile
 
         data_Hash = JSON.parse(File.read('some.json'))
         data_Hash.each { |emailObj|

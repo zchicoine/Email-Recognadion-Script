@@ -1,6 +1,8 @@
 require '../lib/ship_names'
 require '../lib/date_port_names'
 
+# right now of no use but need the code for reference
+
 class EmailRScript
     include Shipnames
     include DatePortNames

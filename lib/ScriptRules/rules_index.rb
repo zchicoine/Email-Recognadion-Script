@@ -12,7 +12,7 @@ $jsonData = Hash.new
 class RulesIndex
 
 
- def initialize()
+  def initialize
 
  end
 
