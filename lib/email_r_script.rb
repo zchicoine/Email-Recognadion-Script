@@ -3,7 +3,8 @@ require '../lib/date_port_names'
 
 # right now of no use but need the code for reference
 
-class EmailRScript
+module EmailRS
+  module EmailRScript
     include Shipnames
     include DatePortNames
 
@@ -25,5 +26,6 @@ class EmailRScript
         return data_ctrl_input
     end
 
+  end
 end
 

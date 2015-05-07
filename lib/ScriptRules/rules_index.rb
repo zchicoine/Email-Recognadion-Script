@@ -9,14 +9,14 @@ require 'csv'
 require 'json'
 
 $jsonData = Hash.new
-class RulesIndex
+module RulesIndex
 
 
   def initialize
 
- end
+  end
 
- def readFromFile(fileName)
+  def readFromFile(fileName)
    def is_int(str)
      # Check if a string should be an integer
      return !!(str =~ /^[-+]?[1-9]([0-9]*)?$/)

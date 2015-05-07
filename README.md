@@ -18,12 +18,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    email_reg = EmailRS.new
 
-## Contributing
+        # :description run the email script onto the input emails to validate email as
+        # a potential ship position
+        # :param Expects the output of KEE gem. The array of emails as hash
+        # :return {status:'fail',body:,subject:,from:,email_address, date:,etc}. OR
+        # {email:{status:'succ',body:,subject:,from:,etc},
+        #  ship_info:[{ship_name:,port_name:,open_date:},etc]}
+        # The output to be passed onto the Data controller
+        email_reg.start_script(param)
 
-1. Fork it ( https://github.com/[my-github-username]/EmailRS/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+The Ship Network @2015

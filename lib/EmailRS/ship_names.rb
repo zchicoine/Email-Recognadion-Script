@@ -1,4 +1,4 @@
-module Shipnames
+module ShipNames
 
     # @param [String]
     # @return [String]

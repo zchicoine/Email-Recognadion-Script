@@ -1,30 +1,28 @@
 #require 'EmailRS/version'
 #require File.expand_path('../ScriptRules/rules_index')
 #require File.expand_path('../ScriptRules/process_rules')
-require 'EmailRS/ship_names'
-require 'EmailRS/get_email_array'
+require_relative 'EmailRS/ship_names'
+require_relative 'ScriptRules/process_rules'
+require_relative 'ScriptRules/rules_index'
 
 
 module EmailRS
-  extend Shipnames
-  extend GetEmailArray
+
+
   class << self
 
-    # :description create objects ctor
+
     def new
 
+      Class.new do
+        include Singleton
+        include EmailRS::EmailRScript
+        include ProcessRules
+
+      end.instance
+
     end
 
-    # :return The hash format to be sent to the data controller module. The has format should contain the email,
-    # the valid parsed data and any other relevant information expected_hash
-    def start_script
-
-      input_emails = GetEmailArray.getKEEArray
-      #   data_ctrl_input = {}
-
-
-      #  return data_ctrl_input
-    end
 
 
   end
@@ -39,4 +37,4 @@ module EmailRS
 
 end
 
-EmailRS.new.greet
+EmailRS.new.start_script

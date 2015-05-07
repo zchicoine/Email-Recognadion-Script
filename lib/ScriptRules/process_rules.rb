@@ -3,7 +3,8 @@
 =end
 require 'json'
 
-class ProcessRules
+
+module ProcessRules
 
     emailMsgArray, msgArray = [], []
     # global valid date formats .. any new date formats can be added into this
@@ -59,6 +60,19 @@ class ProcessRules
                 puts result
             end
         end
+
+    end
+
+    # :param Expects the output of KEE gem. The array of emails as hash
+    # :return {status:'fail',body:,subject:,from:,email_address, date:,etc}. OR
+    # {email:{status:'succ',body:,subject:,from:,etc},
+    #  ship_info:[{ship_name:,port_name:,open_date:},etc]}
+    # The output to be passed onto the Data controller
+    def start_script(kee_array)
+
+      # {status:'fail',body:,subject:,from:,email_address, date:,etc}
+
+      return {}
 
     end
 
