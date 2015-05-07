@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = EmailRS::VERSION
   spec.authors       = ["Mohammed alnakli"]
   spec.email         = ["hassoun@outlook.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary = %q{Parses an email input and classifies it as a valid ship position.}
+  spec.description = %q{Parses an email input and classifies it as a valid ship position.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
